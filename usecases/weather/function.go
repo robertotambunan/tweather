@@ -2,7 +2,6 @@ package weather
 
 import (
 	"context"
-	"log"
 	"strings"
 	"time"
 )
@@ -34,8 +33,7 @@ func (wu *weatherUC) PostCurrentWeather(ctx context.Context) (err error) {
 
 	weathers.UpdatedAt = time.Now().Format(time.RFC1123)
 	tweet := composeMessage(weathers)
-	log.Println(tweet)
-	// err = wu.twitterRepo.PostTweet(ctx, tweet)
+	err = wu.twitterRepo.PostTweet(ctx, tweet)
 
 	return
 }

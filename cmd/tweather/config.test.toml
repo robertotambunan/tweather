@@ -1,0 +1,8 @@
+[credential]
+    [credential.consumer]
+        key = your_key
+        secret = your_secret
+    
+    [credential.access]
+        token = your_token
+        secret = your_secret

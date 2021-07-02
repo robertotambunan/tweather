@@ -5,14 +5,6 @@ import (
 	tR "github.com/robertotambunan/tweather/repositories/twitter"
 )
 
-// AuthenticationInformation : Information for authentication to twitter
-type AuthenticationInformation struct {
-	ConsumerKey    string
-	ConsumerSecret string
-	AccessToken    string
-	TokenSecret    string
-}
-
 const (
 	// TwitterV1Endpoint : twitter v1 endpoint json
 	TwitterV1Endpoint = "https://api.twitter.com/1.1/statuses/update.json"

@@ -4,6 +4,8 @@ import (
 	"context"
 	"strings"
 	"time"
+
+	tR "github.com/robertotambunan/tweather/repositories/twitter"
 )
 
 func (wu *weatherUC) PostCurrentWeather(ctx context.Context) (err error) {
@@ -33,7 +35,10 @@ func (wu *weatherUC) PostCurrentWeather(ctx context.Context) (err error) {
 
 	weathers.UpdatedAt = time.Now().Format(time.RFC1123)
 	tweet := composeMessage(weathers)
-	err = wu.twitterRepo.PostTweet(ctx, tweet)
+	tweetPost := tR.TweetParam{
+		Tweet: tweet,
+	}
+	_, err = wu.twitterRepo.PostTweet(ctx, tweetPost)
 
 	return
 }

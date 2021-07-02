@@ -35,7 +35,7 @@ func Test_composeMessage(t *testing.T) {
 						},
 					}},
 			},
-			wantTweet: "Weather at Mon 12:41: Jakarta - Rainy (24 C), Medan - Cloudy (29 C), Tangerang - Rainy (25 C). This tweet updated at Mon 10:41 by Tweather-Bot.",
+			wantTweet: `Weather Forcast for Mon 12:41: Jakarta - Rainy (24 C), Medan - Cloudy (29 C), Tangerang - Rainy (25 C). This tweet updated at Mon 10:41 by Tweather-Bot.`,
 		},
 	}
 	for _, tt := range tests {

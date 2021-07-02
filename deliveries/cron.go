@@ -11,4 +11,9 @@ func (cw *CronWeather) ActivateWheater() {
 	if err != nil {
 		log.Println(err)
 	}
+
+	err = cw.newsUsecase.PostTopNewsIndonesia(context.Background())
+	if err != nil {
+		log.Println(err)
+	}
 }

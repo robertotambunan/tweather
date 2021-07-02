@@ -13,7 +13,10 @@ import (
 	"github.com/robertotambunan/tweather/deliveries"
 	bmkgHTTPR "github.com/robertotambunan/tweather/repositories/bmkg/http"
 	twHTTPR "github.com/robertotambunan/tweather/repositories/twitter/http"
+	nUC "github.com/robertotambunan/tweather/usecases/news"
 	wUC "github.com/robertotambunan/tweather/usecases/weather"
+
+	newsHTTPR "github.com/robertotambunan/tweather/repositories/news/http"
 )
 
 func main() {
@@ -43,12 +46,14 @@ func main() {
 	// repositories
 	bmkgHTTPRepo := bmkgHTTPR.NewBMKGHTTPRepo(&http.Client{})
 	twitterHTTPRepo := twHTTPR.NewTwitterHTTP(twClient)
+	newsHTTPRepo := newsHTTPR.NewNewsHTTPRepo(&http.Client{}, viper.GetString("news.api_key"))
 
 	// usecases
 	weatherUC := wUC.NewWeatherUC(twitterHTTPRepo, bmkgHTTPRepo)
+	newsUC := nUC.NewNewsUC(twitterHTTPRepo, newsHTTPRepo)
 
 	// deliveres
-	cronDelivery := deliveries.NewCron(weatherUC)
+	cronDelivery := deliveries.NewCron(weatherUC, newsUC)
 
 	cronDelivery.ActivateWheater()
 

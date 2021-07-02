@@ -6,3 +6,6 @@
     [credential.access]
         token = your_token
         secret = your_secret
+
+[news]
+    api_key = your_news_api_key (https://newsapi.org/docs)\

@@ -16,4 +16,9 @@ func (cw *CronWeather) ActivateWheater() {
 	if err != nil {
 		log.Println(err)
 	}
+
+	err = cw.newsUsecase.PostTopNewsSport(context.Background())
+	if err != nil {
+		log.Println(err)
+	}
 }

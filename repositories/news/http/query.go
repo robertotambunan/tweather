@@ -11,7 +11,7 @@ import (
 	nR "github.com/robertotambunan/tweather/repositories/news"
 )
 
-func (nr *newsHTTPRepo) GetTopNewsBasedOnNation(ctx context.Context, nationCode string, size int) (news []nR.News) {
+func (nr *newsHTTPRepo) GetTopNewsBasedOnNation(ctx context.Context, nationCode, category string, size int) (news []nR.News) {
 
 	if nationCode == "" || size <= 0 {
 		return
@@ -27,6 +27,7 @@ func (nr *newsHTTPRepo) GetTopNewsBasedOnNation(ctx context.Context, nationCode 
 	q.Add("apiKey", nr.apiKey)
 	q.Add("country", nationCode)
 	q.Add("pageSize", strconv.Itoa(size))
+	q.Add("category", category)
 
 	req.URL.RawQuery = q.Encode()
 
